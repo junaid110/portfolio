@@ -3,8 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Data Engineering Portfolio</title>
-<meta name="description" content="Junior Data Engineer portfolio: SQL, ETL/ELT, AWS, Snowflake.">
+<title>Syed M. Junaid Abbas | Junior Data Engineer, Karachi (Freelance)</title>
+<meta name="description" content="Freelance Junior Data Engineer in Karachi, Pakistan. ETL/ELT pipelines, Snowflake data warehouses, AWS data lakes (S3, Glue, Athena), Airflow and Python.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Syed M. Junaid Abbas | Junior Data Engineer">
+<meta property="og:description" content="ETL/ELT pipelines, Snowflake warehouses and AWS data lakes for freelance projects.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Syed M. Junaid Abbas","jobTitle":"Junior Data Engineer","address":{"@type":"PostalAddress","addressLocality":"Karachi","addressCountry":"PK"},"sameAs":["https://linkedin.com/in/syedjunaidabbas","https://github.com/junaid110"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
@@ -67,7 +72,19 @@ h3{font-size:1.08rem}
 .edu .when{color:var(--muted);font-size:.95rem}
 footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted)}
 .err{padding:24px;border:1px solid var(--warm);border-radius:8px;margin:40px 0}
+.avail{display:inline-flex;align-items:center;gap:8px;margin:0 0 16px;padding:5px 14px;border:1px solid var(--line);background:var(--surface);border-radius:999px;font-weight:600;font-size:.92rem}
+.avail::before{content:"";width:9px;height:9px;border-radius:50%;background:#2FA866}
+.project ul.bul{margin:0;padding-left:18px;color:var(--muted)}
+.contact-grid{display:grid;gap:28px}
+.field{display:grid;gap:6px;margin-bottom:14px}
+.field label{font-weight:600;font-size:.95rem}
+.field input,.field textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit}
+button.btn{cursor:pointer;font:600 1rem var(--body)}
+button.btn:disabled{opacity:.6;cursor:wait}
+.fstatus{min-height:1.5em;margin:12px 0 0;font-weight:600}
+.fstatus.ok{color:#2FA866}.fstatus.bad{color:#D14B4B}
 @media(min-width:720px){
+  .contact-grid{grid-template-columns:1fr 1.2fr}
   .projects{grid-template-columns:1fr 1fr}
   .project.first{grid-column:1/-1}
   .skill-group{grid-template-columns:200px 1fr;align-items:start}
@@ -79,7 +96,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted)}
 <header class="bar">
   <div class="wrap">
     <nav aria-label="Sections">
-      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience" id="nav-experience" hidden>Experience</a><a href="#education">Education</a><a href="#certifications" id="nav-certifications" hidden>Certifications</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#services">Services</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience" id="nav-experience" hidden>Experience</a><a href="#education">Education</a><a href="#certifications" id="nav-certifications" hidden>Certifications</a><a href="#contact">Contact</a>
     </nav>
     <button class="theme" id="theme" type="button" aria-label="Switch theme">Dark</button>
   </div>
@@ -87,6 +104,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted)}
 
 <main class="wrap" id="app">
   <section class="hero" id="about">
+    <p class="avail" id="avail" hidden></p>
     <h1 id="name">Loading…</h1>
     <p class="role" id="role"></p>
     <p class="tag" id="tagline"></p>
@@ -94,12 +112,28 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted)}
     <div class="actions" id="actions"></div>
     <div class="pipe" id="pipe" aria-hidden="true"></div>
   </section>
+  <section id="services"><h2>Services</h2><div class="projects" id="svcList"></div></section>
   <section id="skills"><h2>Skills</h2><div class="skills" id="skillList"></div></section>
   <section id="projects"><h2>Projects</h2><p class="note" id="projNote"></p><div class="projects" id="projList"></div></section>
   <section id="experience" hidden><h2>Experience</h2><ul class="edu" id="expList"></ul></section>
   <section id="education"><h2>Education</h2><ul class="edu" id="eduList"></ul></section>
   <section id="certifications" hidden><h2>Certifications</h2><div class="projects" id="certList"></div></section>
-  <section id="contact"><h2>Contact</h2><p id="contactText"></p></section>
+  <section id="contact"><h2>Let’s work together</h2>
+    <div class="contact-grid">
+      <div><p id="contactText"></p><div class="actions" id="contactActions"></div></div>
+      <form id="cform" novalidate>
+        <input type="hidden" name="access_key" id="fkey">
+        <input type="hidden" name="subject" value="New portfolio enquiry">
+        <input type="hidden" name="from_name" value="Portfolio website">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="f-msg">What do you need?</label><textarea id="f-msg" name="message" rows="5" required></textarea></div>
+        <button class="btn" type="submit" id="fbtn">Send message</button>
+        <p class="fstatus" id="fstatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
 </main>
 <footer><div class="wrap" id="foot"></div></footer>
 
@@ -124,9 +158,12 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted)}
     $("tagline").textContent=d.tagline+" · "+d.location;
     $("summary").textContent=d.summary;
     var act=$("actions");
-    act.appendChild(linkBtn("View GitHub",d.links.github));
+    if(d.availability){$("avail").textContent=d.availability;$("avail").hidden=false}
+    var wa=d.whatsapp?"https://wa.me/"+d.whatsapp+"?text="+encodeURIComponent("Hi Junaid, I found your portfolio and would like to discuss a data project."):"";
+    act.appendChild(linkBtn("Hire me","#contact"));
+    if(wa)act.appendChild(linkBtn("WhatsApp",wa,true));
+    act.appendChild(linkBtn("GitHub",d.links.github,true));
     act.appendChild(linkBtn("LinkedIn",d.links.linkedin,true));
-    act.appendChild(linkBtn("Email me","mailto:"+d.email,true));
 
     var pipe=$("pipe");
     (d.pipeline||[]).forEach(function(s,i){
@@ -185,10 +222,38 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted)}
       });
     }
 
+    var sv=$("svcList");
+    (d.services||[]).forEach(function(x){
+      var c=el("article","project");c.appendChild(el("h3",null,x.title));c.appendChild(el("p",null,x.summary));
+      var ul=el("ul","bul");(x.deliverables||[]).forEach(function(t){ul.appendChild(el("li",null,t))});c.appendChild(ul);
+      sv.appendChild(c);
+    });
+    if(!(d.services||[]).length)$("services").hidden=true;
+
     var ct=$("contactText");
-    ct.appendChild(document.createTextNode("Open to junior data engineering roles. Write to "));
+    ct.appendChild(document.createTextNode("Have a data pipeline, warehouse or cleanup project? Tell me what you need and I will reply by email or WhatsApp. You can also write to "));
     var m=el("a",null,d.email);m.href="mailto:"+d.email;ct.appendChild(m);
-    ct.appendChild(document.createTextNode(" or message me on LinkedIn."));
+    ct.appendChild(document.createTextNode("."));
+    var ca=$("contactActions");
+    if(wa)ca.appendChild(linkBtn("Chat on WhatsApp",wa));
+    if(d.bookingLink)ca.appendChild(linkBtn("Book a call",d.bookingLink,true));
+
+    $("fkey").value=d.formKey||"";
+    var form=$("cform"),fb=$("fbtn"),fs=$("fstatus");
+    form.addEventListener("submit",function(ev){
+      ev.preventDefault();
+      if(!form.checkValidity()){form.reportValidity();return}
+      fb.disabled=true;fs.className="fstatus";fs.textContent="Sending…";
+      var body={};new FormData(form).forEach(function(v,k){body[k]=v});
+      fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(body)})
+        .then(function(r){return r.json()})
+        .then(function(res){
+          if(!res.success)throw new Error("fail");
+          form.reset();fs.className="fstatus ok";fs.textContent="Thanks! Your message was sent. I will reply soon.";
+        })
+        .catch(function(){fs.className="fstatus bad";fs.textContent="Could not send. Please email "+d.email+" or use WhatsApp."})
+        .then(function(){fb.disabled=false});
+    });
     $("foot").textContent="© "+new Date().getFullYear()+" "+d.name+" · "+d.location;
   }
 

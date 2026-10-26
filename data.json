@@ -187,6 +187,60 @@
       "year": ""
     }
   ],
+  "education": [
+    {
+      "degree": "Master of Science in Computer Science",
+      "school": "Muhammad Ali Jinnah University",
+      "period": "10/2020 – 02/2023"
+    },
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "school": "Ilma University",
+      "period": "04/2014 – 04/2018"
+    }
+  ],
+  "availability": "Available for freelance projects",
+  "whatsapp": "923313831135",
+  "bookingLink": "",
+  "formKey": "1f5d9bdf-9e9d-476e-977a-e21aab0b66f3",
+  "services": [
+    {
+      "title": "Automated ETL/ELT pipelines",
+      "summary": "Scheduled pipelines that move data from files, APIs or databases into your warehouse, without manual work.",
+      "deliverables": [
+        "Airflow DAGs with retries and logging",
+        "Python + SQL transformations",
+        "Idempotent loads, safe to re-run"
+      ]
+    },
+    {
+      "title": "Snowflake data warehouse design",
+      "summary": "A clean, query-friendly warehouse model so your reports stop depending on messy source tables.",
+      "deliverables": [
+        "Star schema with fact and dimension tables",
+        "SCD Type-1/Type-2 history tracking",
+        "CDC with Snowflake Streams and Tasks"
+      ]
+    },
+    {
+      "title": "AWS data lake setup",
+      "summary": "A low-cost data lake you can query with plain SQL.",
+      "deliverables": [
+        "S3 layout with Parquet files",
+        "Glue catalog and schema discovery",
+        "Athena queries ready for QuickSight"
+      ]
+    },
+    {
+      "title": "Data cleaning and reporting prep",
+      "summary": "Messy spreadsheets and exports turned into trusted, dashboard-ready tables.",
+      "deliverables": [
+        "Validated, de-duplicated datasets (Pandas/SQL)",
+        "Clean tables ready for dashboards",
+        "Short notes on every rule applied"
+      ]
+    }
+  ],
   "_templates": {
     "experience_item": {
       "role": "Data Engineering Intern",
@@ -204,17 +258,5 @@
       "link": "https://link-to-credential"
     },
     "how_to_use": "Copy an item into the experience or certifications list above. The section appears on the site only when its list is not empty. This _templates block is ignored by the site."
-  },
-  "education": [
-    {
-      "degree": "Master of Science in Computer Science",
-      "school": "Muhammad Ali Jinnah University",
-      "period": "10/2020 – 02/2023"
-    },
-    {
-      "degree": "Bachelor of Science in Computer Science",
-      "school": "Ilma University",
-      "period": "04/2014 – 04/2018"
-    }
-  ]
+  }
 }
