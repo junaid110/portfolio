@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Engineering Portfolio</title>
+<meta name="description" content="Junior Data Engineer portfolio: SQL, ETL/ELT, AWS, Snowflake.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F8; --surface:#FFFFFF; --ink:#14202B; --muted:#52606D;
+  --line:#D5DDE5; --accent:#2457D6; --accent-ink:#FFFFFF; --warm:#C9871A;
+  --head:"Sora","Segoe UI",system-ui,sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+}
+:root[data-theme="dark"]{
+  --bg:#0D1620; --surface:#142130; --ink:#E7EEF5; --muted:#9FB0C0;
+  --line:#25364A; --accent:#6EA2FF; --accent-ink:#0D1620; --warm:#E8B24A;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header.bar{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+header.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+nav{display:flex;gap:18px;overflow-x:auto}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem;white-space:nowrap}
+nav a:hover{color:var(--ink)}
+button.theme{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 14px;font:600 .9rem var(--body);cursor:pointer}
+section{padding:56px 0}
+h1,h2,h3{font-family:var(--head);line-height:1.2;margin:0}
+h1{font-size:clamp(2.1rem,6vw,3.4rem);letter-spacing:-.02em}
+h2{font-size:1.6rem;margin-bottom:24px}
+h3{font-size:1.08rem}
+.hero{padding-top:64px}
+.role{font-family:var(--head);font-weight:500;color:var(--accent);font-size:1.25rem;margin:10px 0 4px}
+.tag{color:var(--muted);margin:0 0 20px}
+.summary{max-width:68ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;font-weight:600;text-decoration:none;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink)}
+.btn.alt{background:transparent;color:var(--accent)}
+.pipe{display:flex;align-items:center;margin:40px 0 0;overflow-x:auto;padding:6px 2px}
+.pipe .node{flex:none;padding:8px 14px;border:1px solid var(--line);background:var(--surface);border-radius:8px;font:600 .9rem var(--head)}
+.pipe .link{flex:1 0 28px;min-width:28px;height:2px;background:var(--line);position:relative}
+.pipe .link::after{content:"";position:absolute;top:-3px;left:0;width:8px;height:8px;border-radius:50%;background:var(--warm);animation:flow 2.4s linear infinite}
+@keyframes flow{from{left:0;opacity:1}to{left:calc(100% - 8px);opacity:1}}
+.skills{display:grid;gap:20px}
+.skill-group{display:grid;gap:8px;grid-template-columns:1fr}
+.skill-group h3{color:var(--muted);font-size:.98rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.chips li{padding:4px 12px;border:1px solid var(--line);background:var(--surface);border-radius:999px;font-size:.93rem}
+.projects{display:grid;gap:16px}
+.project{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:12px}
+.project p{margin:0;color:var(--muted)}
+.project a.repo{font-weight:600;text-decoration:none}
+.project a.repo:hover{text-decoration:underline}
+.note{color:var(--muted);margin:-12px 0 20px}
+.edu{list-style:none;margin:0;padding:0 0 0 20px;border-left:2px solid var(--line);display:grid;gap:24px}
+.edu li{position:relative}
+.edu li::before{content:"";position:absolute;left:-27px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.edu ul{margin:8px 0 0;padding-left:18px;color:var(--muted)}
+[hidden]{display:none!important}
+.edu .when{color:var(--muted);font-size:.95rem}
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted)}
+.err{padding:24px;border:1px solid var(--warm);border-radius:8px;margin:40px 0}
+@media(min-width:720px){
+  .projects{grid-template-columns:1fr 1fr}
+  .project.first{grid-column:1/-1}
+  .skill-group{grid-template-columns:200px 1fr;align-items:start}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pipe .link::after{animation:none;left:calc(50% - 4px)}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <nav aria-label="Sections">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience" id="nav-experience" hidden>Experience</a><a href="#education">Education</a><a href="#certifications" id="nav-certifications" hidden>Certifications</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="theme" id="theme" type="button" aria-label="Switch theme">Dark</button>
+  </div>
+</header>
+
+<main class="wrap" id="app">
+  <section class="hero" id="about">
+    <h1 id="name">Loading…</h1>
+    <p class="role" id="role"></p>
+    <p class="tag" id="tagline"></p>
+    <p class="summary" id="summary"></p>
+    <div class="actions" id="actions"></div>
+    <div class="pipe" id="pipe" aria-hidden="true"></div>
+  </section>
+  <section id="skills"><h2>Skills</h2><div class="skills" id="skillList"></div></section>
+  <section id="projects"><h2>Projects</h2><p class="note" id="projNote"></p><div class="projects" id="projList"></div></section>
+  <section id="experience" hidden><h2>Experience</h2><ul class="edu" id="expList"></ul></section>
+  <section id="education"><h2>Education</h2><ul class="edu" id="eduList"></ul></section>
+  <section id="certifications" hidden><h2>Certifications</h2><div class="projects" id="certList"></div></section>
+  <section id="contact"><h2>Contact</h2><p id="contactText"></p></section>
+</main>
+<footer><div class="wrap" id="foot"></div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById("theme");
+  var saved=null;
+  try{saved=localStorage.getItem("theme")}catch(e){}
+  var dark=saved?saved==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;
+  function apply(){root.setAttribute("data-theme",dark?"dark":"light");btn.textContent=dark?"Light":"Dark"}
+  apply();
+  btn.addEventListener("click",function(){dark=!dark;apply();try{localStorage.setItem("theme",dark?"dark":"light")}catch(e){}});
+
+  function el(tag,cls,text){var n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n}
+  function $(id){return document.getElementById(id)}
+  function linkBtn(text,href,alt){var a=el("a","btn"+(alt?" alt":""),text);a.href=href;if(href.indexOf("http")===0){a.target="_blank";a.rel="noopener noreferrer"}return a}
+
+  function render(d){
+    document.title=d.name+" | "+d.title;
+    $("name").textContent=d.name;
+    $("role").textContent=d.title;
+    $("tagline").textContent=d.tagline+" · "+d.location;
+    $("summary").textContent=d.summary;
+    var act=$("actions");
+    act.appendChild(linkBtn("View GitHub",d.links.github));
+    act.appendChild(linkBtn("LinkedIn",d.links.linkedin,true));
+    act.appendChild(linkBtn("Email me","mailto:"+d.email,true));
+
+    var pipe=$("pipe");
+    (d.pipeline||[]).forEach(function(s,i){
+      if(i)pipe.appendChild(el("span","link"));
+      pipe.appendChild(el("span","node",s));
+    });
+
+    var sk=$("skillList");
+    d.skills.forEach(function(g){
+      var row=el("div","skill-group");row.appendChild(el("h3",null,g.group));
+      var ul=el("ul","chips");g.items.forEach(function(t){ul.appendChild(el("li",null,t))});
+      row.appendChild(ul);sk.appendChild(row);
+    });
+
+    $("projNote").textContent=d.projectsNote||"";
+    var pl=$("projList");
+    d.projects.forEach(function(p,i){
+      var c=el("article","project"+(i===0?" first":""));
+      c.appendChild(el("h3",null,p.name));
+      c.appendChild(el("p",null,p.summary));
+      var ul=el("ul","chips");p.stack.forEach(function(t){ul.appendChild(el("li",null,t))});
+      c.appendChild(ul);
+      var a=el("a","repo","View code on GitHub");a.href=p.link;a.target="_blank";a.rel="noopener noreferrer";
+      c.appendChild(a);pl.appendChild(c);
+    });
+
+    var ed=$("eduList");
+    d.education.forEach(function(e){
+      var li=el("li");li.appendChild(el("h3",null,e.degree));
+      li.appendChild(el("div",null,e.school));
+      li.appendChild(el("div","when",e.period));
+      ed.appendChild(li);
+    });
+
+    var ex=d.experience||[];
+    if(ex.length){
+      $("experience").hidden=false;$("nav-experience").hidden=false;
+      var el2=$("expList");
+      ex.forEach(function(x){
+        var li=el("li");li.appendChild(el("h3",null,x.role));
+        li.appendChild(el("div",null,x.company));
+        li.appendChild(el("div","when",x.period));
+        if(x.points&&x.points.length){var ul=el("ul");x.points.forEach(function(t){ul.appendChild(el("li",null,t))});li.appendChild(ul)}
+        el2.appendChild(li);
+      });
+    }
+    var ce=d.certifications||[];
+    if(ce.length){
+      $("certifications").hidden=false;$("nav-certifications").hidden=false;
+      var cl=$("certList");
+      ce.forEach(function(c){
+        var card=el("article","project");card.appendChild(el("h3",null,c.name));
+        card.appendChild(el("p",null,c.issuer+(c.year?" · "+c.year:"")));
+        if(c.link){var a=el("a","repo","View credential");a.href=c.link;a.target="_blank";a.rel="noopener noreferrer";card.appendChild(a)}
+        cl.appendChild(card);
+      });
+    }
+
+    var ct=$("contactText");
+    ct.appendChild(document.createTextNode("Open to junior data engineering roles. Write to "));
+    var m=el("a",null,d.email);m.href="mailto:"+d.email;ct.appendChild(m);
+    ct.appendChild(document.createTextNode(" or message me on LinkedIn."));
+    $("foot").textContent="© "+new Date().getFullYear()+" "+d.name+" · "+d.location;
+  }
+
+  fetch("data.json").then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
+    .then(render)
+    .catch(function(){
+      var app=$("app");app.textContent="";
+      var e=el("div","err","Could not load data.json. Check that it sits next to index.html, and open the site through a web server (Live Server, GitHub Pages or Vercel), not by double-clicking the file.");
+      app.appendChild(e);
+    });
+})();
+</script>
+</body>
+</html>

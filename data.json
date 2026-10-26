@@ -1,0 +1,220 @@
+{
+  "name": "Syed M. Junaid Abbas",
+  "title": "Junior Data Engineer",
+  "tagline": "SQL · Data Modelling · ETL/ELT · Git",
+  "location": "Karachi, Pakistan",
+  "email": "syedmjunaidabbas@gmail.com",
+  "links": {
+    "linkedin": "https://linkedin.com/in/syedjunaidabbas",
+    "github": "https://github.com/junaid110/Cloud-Data-Engineering-Course-from-SMIT"
+  },
+  "summary": "Junior Data Engineer with strong SQL proficiency and hands-on experience in ETL/ELT pipeline development, data transformation, and dimensional modelling (Star Schema, Snowflake Schema, Fact and Dimension Tables). Skilled in building scalable, well-structured data solutions on AWS and Snowflake with Git-based version control and SDLC best practices.",
+  "pipeline": [
+    "Ingest",
+    "Stream",
+    "Transform",
+    "Warehouse",
+    "Dashboard"
+  ],
+  "skills": [
+    {
+      "group": "Core Data Engineering",
+      "items": [
+        "SQL",
+        "Python",
+        "ETL/ELT Pipeline Development",
+        "Data Transformation",
+        "Data Ingestion",
+        "Pipeline Orchestration"
+      ]
+    },
+    {
+      "group": "Data Modelling",
+      "items": [
+        "Star Schema",
+        "Snowflake Schema",
+        "Dimensional Modelling",
+        "Fact & Dimension Tables",
+        "CDC (Change Data Capture)",
+        "Data Warehousing"
+      ]
+    },
+    {
+      "group": "Pipeline & Orchestration",
+      "items": [
+        "Apache Airflow",
+        "Apache Kafka",
+        "Apache NiFi",
+        "AWS Glue"
+      ]
+    },
+    {
+      "group": "Cloud & Infrastructure",
+      "items": [
+        "AWS S3",
+        "EC2",
+        "Glue",
+        "Athena",
+        "Kinesis",
+        "Firehose",
+        "Lambda",
+        "Redshift",
+        "CloudWatch",
+        "Snowflake",
+        "Docker",
+        "Terraform",
+        "Git/GitHub",
+        "SQL Server"
+      ]
+    },
+    {
+      "group": "Languages & Libraries",
+      "items": [
+        "Python",
+        "SQL",
+        "Pandas",
+        "NumPy"
+      ]
+    }
+  ],
+  "projectsNote": "5 featured projects from 15 built during the SMIT Cloud Data Engineering course.",
+  "projects": [
+    {
+      "name": "CDC & Slowly Changing Dimensions Pipeline",
+      "summary": "Real-time CDC pipeline using Snowflake Streams and Tasks, loading a Star Schema warehouse.",
+      "stack": [
+        "Snowflake",
+        "Apache NiFi",
+        "Terraform",
+        "Docker",
+        "Star Schema"
+      ],
+      "link": "https://github.com/junaid110/Cloud-Data-Engineering-Course-from-SMIT"
+    },
+    {
+      "name": "eCommerce ETL/ELT Data Pipeline",
+      "summary": "Production-grade pipeline with idempotent batch tracking, from event ingestion to warehouse.",
+      "stack": [
+        "AWS Kinesis Firehose",
+        "S3",
+        "Apache Airflow",
+        "Snowflake",
+        "SQL"
+      ],
+      "link": "https://github.com/junaid110/Cloud-Data-Engineering-Course-from-SMIT"
+    },
+    {
+      "name": "Real-Time Stock Market Streaming Pipeline",
+      "summary": "Live streaming pipeline with Glue cataloging and Athena querying.",
+      "stack": [
+        "Apache Kafka",
+        "AWS S3",
+        "AWS Glue",
+        "Amazon Athena",
+        "Python"
+      ],
+      "link": "https://github.com/junaid110/Cloud-Data-Engineering-Course-from-SMIT"
+    },
+    {
+      "name": "Spotify End-to-End Data Pipeline",
+      "summary": "Staging-to-warehouse architecture with QuickSight dashboards on Parquet data.",
+      "stack": [
+        "AWS S3",
+        "Glue",
+        "Athena",
+        "QuickSight",
+        "IAM",
+        "Parquet"
+      ],
+      "link": "https://github.com/junaid110/Cloud-Data-Engineering-Course-from-SMIT"
+    },
+    {
+      "name": "Weather ETL Pipeline",
+      "summary": "Containerized weather data orchestration, scheduled with Airflow.",
+      "stack": [
+        "Apache Airflow",
+        "Docker",
+        "Python"
+      ],
+      "link": "https://github.com/junaid110/Cloud-Data-Engineering-Course-from-SMIT"
+    }
+  ],
+  "experience": [
+    {
+      "role": "DEO / IT Assistant",
+      "company": "Public Sector Organization, Karachi",
+      "period": "03/2019 – Present",
+      "points": [
+        "Diagnosed and resolved hardware, software, and network issues; configured OS and applications, and managed user access.",
+        "Maintained systems (Proxmox), performed backups, configured LAN/Wi-Fi, and facilitated Zoom/Webex meetings.",
+        "Documented IT processes and coordinated with vendors to keep systems performing through preventive maintenance."
+      ]
+    },
+    {
+      "role": "Data Entry Officer (DEO)",
+      "company": "Aircon Logistics International, Karachi",
+      "period": "06/2016 – 06/2018",
+      "points": [
+        "Generated monthly Excel reports with data validation and analysis to support business decisions.",
+        "Managed digital records, keeping data accurate, confidential, and compliant across all documentation."
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Cloud Data Engineering",
+      "issuer": "SMIT",
+      "year": ""
+    },
+    {
+      "name": "Data Warehousing Workshop",
+      "issuer": "Snowflake",
+      "year": ""
+    },
+    {
+      "name": "Data Engineering Foundations",
+      "issuer": "LinkedIn",
+      "year": ""
+    },
+    {
+      "name": "Process Data from Dirty to Clean",
+      "issuer": "Google",
+      "year": ""
+    },
+    {
+      "name": "Foundations: Data, Data Everywhere",
+      "issuer": "Google",
+      "year": ""
+    }
+  ],
+  "_templates": {
+    "experience_item": {
+      "role": "Data Engineering Intern",
+      "company": "Company name",
+      "period": "06/2025 – 09/2025",
+      "points": [
+        "Built an Airflow DAG that loads daily sales data into Snowflake.",
+        "Cut report refresh time by 40%."
+      ]
+    },
+    "certification_item": {
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "year": "2025",
+      "link": "https://link-to-credential"
+    },
+    "how_to_use": "Copy an item into the experience or certifications list above. The section appears on the site only when its list is not empty. This _templates block is ignored by the site."
+  },
+  "education": [
+    {
+      "degree": "Master of Science in Computer Science",
+      "school": "Muhammad Ali Jinnah University",
+      "period": "10/2020 – 02/2023"
+    },
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "school": "Ilma University",
+      "period": "04/2014 – 04/2018"
+    }
+  ]
+}
